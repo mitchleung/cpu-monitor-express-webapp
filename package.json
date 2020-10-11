@@ -1,0 +1,17 @@
+{
+  "name": "cpu-monitor-express-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mitch Leung",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "osx-temperature-sensor": "^1.0.7",
+    "systeminformation": "^4.27.5"
+  }
+}

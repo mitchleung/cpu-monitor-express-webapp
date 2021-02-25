@@ -12,7 +12,7 @@ app.get("/api/all", (req, res) => {
   valueObject = {
     cpuTemperature: "*",
     mem: "used, free, total",
-    currentLoad: "currentload",
+    currentLoad: "currentLoad",
   };
   si.get(valueObject)
     .then((data) => {
@@ -20,7 +20,7 @@ app.get("/api/all", (req, res) => {
       console.log("...");
       const results = {
         cpu: {
-          total: data.currentLoad.currentload,
+          total: data.currentLoad.currentLoad,
           temp: data.cpuTemperature.main,
           cores: data.cpuTemperature.cores,
           max: data.cpuTemperature.max,

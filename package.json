@@ -12,6 +12,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "osx-temperature-sensor": "^1.0.7",
-    "systeminformation": "^4.27.5"
+    "systeminformation": "^5.5.0"
   }
 }

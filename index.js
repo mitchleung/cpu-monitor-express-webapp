@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/all", (req, res) => {
   valueObject = {
-    cpuTemperature: "*",
+    cpuTemperature: "main, cores, max",
     mem: "used, free, total",
     currentLoad: "currentLoad",
   };

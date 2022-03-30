@@ -12,6 +12,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "https": "^1.0.0",
     "osx-temperature-sensor": "^1.0.7",
     "systeminformation": "^5.11.6"
   }

@@ -17,13 +17,21 @@ Read more on [Configuration Reference on System Information](https://systeminfor
 
 Read more on [Expressjs Reference](http://expressjs.com).
 
+### Run with HTTP
+```
+npm run start
 
-### Run at root folder
 ```
-node index.js OR npm run start
+
+### Run with HTTPS
 ```
+npm run startSecure
+```
+
 Nothing to build
 
+With HTTPS running already, you can go to <https://cpu-monitor-vue.vercel.app>
+Go to the Settings page and update the protocol as https and local host IP of your machine, e.g. 192.168.0.2
 
 ### License
 MIT License &copy; Mitch Leung

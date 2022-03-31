@@ -9,7 +9,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Reference to API ");
 });
-
+const arguments = process.argv.splice(2);
 async function getMySystemInfo(valueObject) {
   try {
     const basicData = await si.get(valueObject);
@@ -56,7 +56,7 @@ app.get("/api/all", async (req, res) => {
   };
   const sysInfo = await getMySystemInfo(valueObject);
   const netStats = await getMyNetworkStats();
-  console.log({ netStats });
+  // console.log({ netStats });
   const info = {
     ...sysInfo,
     iface: netStats.iface,
@@ -72,48 +72,24 @@ app.get("/api/all", async (req, res) => {
   } else {
     res.send({ error: "Can't reach server" });
   }
-  // si.get(valueObject)
-  //   .then((data) => {
-  //     console.log(data);
-  //     console.log("...");
-  //     const results = {
-  //       cpu: {
-  //         total: data.currentLoad.currentLoad,
-  //         temp: data.cpuTemperature.main,
-  //         cores: data.cpuTemperature.cores,
-  //         max: data.cpuTemperature.max,
-  //       },
-  //       mem: {
-  //         free: data.mem.free,
-  //         used: data.mem.used,
-  //         total: data.mem.total,
-  //       },
-  //     };
-  //     // console.log(results);
-  //     console.log("...");
-  //     // res.send(JSON.stringify(results));
-  //     res.send(results);
-  //   })
-  //   .catch((error) => {
-  //     console.error(error);
-  //     res.send({ error: error });
-  //   });
 });
 
-// Use the following for NON-https connection
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-});
-
-// Use the following instead for self-signed certificate with https
-// https
-//   .createServer(
-//     {
-//       key: fs.readFileSync("server.key"),
-//       cert: fs.readFileSync("server.cert"),
-//     },
-//     app
-//   )
-//   .listen(port, () => {
-//     console.log(`Example app listening at https://localhost:${port}`);
-//   });
+if (arguments && arguments.indexOf("--secure") !== -1) {
+  // Use the following instead for self-signed certificate with https
+  https
+    .createServer(
+      {
+        key: fs.readFileSync("server.key"),
+        cert: fs.readFileSync("server.cert"),
+      },
+      app
+    )
+    .listen(port, () => {
+      console.log(`Example app listening at https://localhost:${port}`);
+    });
+} else {
+  // Use the following for NON-https connection
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  });
+}

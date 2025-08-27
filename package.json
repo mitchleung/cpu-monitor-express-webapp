@@ -16,5 +16,8 @@
     "https": "^1.0.0",
     "osx-temperature-sensor": "^1.0.7",
     "systeminformation": "^5.11.6"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

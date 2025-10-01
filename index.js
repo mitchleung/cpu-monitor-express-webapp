@@ -9,7 +9,7 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Reference to API ");
 });
-const arguments = process.argv.splice(2);
+const args = process.argv.slice(2);
 async function getMySystemInfo(valueObject) {
   try {
     const basicData = await si.get(valueObject);
@@ -74,7 +74,7 @@ app.get("/api/all", async (req, res) => {
   }
 });
 
-if (arguments && arguments.indexOf("--secure") !== -1) {
+if (args.includes("--secure")) {
   // Use the following instead for self-signed certificate with https
   https
     .createServer(
